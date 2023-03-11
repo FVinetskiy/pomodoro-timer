@@ -1,0 +1,121 @@
+.modal
+    height: 100vh
+    width: 100vw
+    position: fixed
+    top: 0
+    left: 0
+    background-color: rgba(0,0,0,0.4)
+    display: flex
+    align-items: center
+    justify-content: center
+    opacity: 0
+    transition: 0.5s 
+    pointer-events: none
+    &__content
+        width: 540px
+        height: 540px
+        background: #fff
+        margin: 0 40px
+        border-radius: 25px
+        padding: 20px 0
+        transition: 0.2s
+        transform: scale(0)
+    &__haeder
+        border-bottom: 1px solid gray
+        margin-bottom: 24px
+    &__container
+        padding: 0 20px
+    &__header-content
+        display: flex
+        align-items: center
+        justify-content: space-between
+        padding-bottom: 20px
+    &__close
+        width: 40px
+        height: 40px
+        transition: 0.2s linear
+        svg
+            width: 40px
+            height: 40px
+        &:hover
+            transform: scale(1.2)
+    &__title
+        font-size: 20px
+        font-weight: 800
+        margin: 0
+    &__main
+        display: flex
+        gap: 30px
+        border-bottom: 1px solid gray
+        padding-bottom: 20px
+        margin-bottom: 22px
+    &__input
+        flex: 1
+        input
+            width: 100%
+    &.active
+        opacity: 1
+        pointer-events: auto
+        .modal__content
+            transform: scale(1)
+    &__wrapper-button
+        display: flex
+        align-items: center
+    &__button-text
+        height: 44px
+        width: 44px
+        border-radius: 50%
+        margin-left: 14px
+        background-color: #EFF1FA
+        &.active
+            background: #000
+            color:#fff
+        &:nth-child(1)
+            font-family: 'Tilt Neon', cursive
+        &:nth-child(2)
+            font-family: 'Dancing Script', cursive
+        &:nth-child(3)
+            font-family: 'Climate Crisis', cursive
+            
+    &__content-setting
+        display: flex
+        align-items: center
+        justify-content: space-between    
+        border-bottom: 1px solid gray
+        padding-bottom: 20px
+        margin-bottom: 22px
+
+    &__button-color
+        height: 44px
+        width: 44px
+        border-radius: 50%
+        margin-left: 14px
+
+        &.pomodoro
+            background: #F87070
+        &.shortbreak
+            background: #70F3F8
+        &.longbreak                                                                                     
+            background: #D881F8
+
+        div, svg
+            width: 28px
+            height: 28px
+
+.save-setting
+    color: #fff
+    border-radius: 50px
+    padding: 24px 110px
+    font-weight: 900
+    border: 0
+    font-size: 14px
+    background-color: var(--mainElements)
+    transform: translateY(50%)
+    transition: all .5s ease-in-out
+    position: absolute
+    left: 50%
+    bottom: -24px
+    transform: translate(-50%, 0)
+
+
+

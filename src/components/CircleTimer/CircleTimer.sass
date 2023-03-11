@@ -1,0 +1,63 @@
+.timer
+    color:#fff
+    &__value
+        font-size: 40px
+        text-align: center
+        margin-bottom: 32px
+    &__button
+        font-size: 30px
+        background: transparent
+        border: 0
+        padding: 24px 20px
+        font-family: var(--mainFonts)
+        color: #fff
+        width: 185px
+        &:hover
+            color: #fff
+        &:disabled
+            color: gray
+            cursor: no-drop
+    &__restart
+        color: #ff000052
+        text-align: center
+        margin: 0 auto
+        font-size: 24px
+        position: absolute
+        left: 0
+        right: 0
+        bottom: 50px
+        background: #00000045
+        width: 120px
+        border-radius: 20px
+
+.circle
+    // background: conic-gradient(red 1%, transparent 0%)
+    border-radius: 50%
+    width: 95%
+    height: 95%
+    display: flex
+    align-items: center
+    justify-content: center
+    &__content
+        width: 380px
+        height: 380px
+        border-radius: 50%
+        display: flex
+        align-items: center
+        justify-content: center
+        background: linear-gradient(-40deg, #2e325a 0%, #161932 80%)
+    
+[data-test-id="CircularProgressbarWithChildren"]
+   width: 100%
+   height: 100%
+
+@media screen and (max-width: 767px)
+    .circle
+        &__content
+            flex: 0 0 auto
+            width: 280px
+            height: 280px
+    .timer
+        &__value
+            margin: 0
+        
