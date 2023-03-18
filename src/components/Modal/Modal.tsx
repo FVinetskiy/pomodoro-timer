@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { FC } from 'react';
 import './Modal.sass';
 import { ReactSVG } from 'react-svg';
+import { useKeyPress } from '../../hooks/useKeyPress';
 import Input from '../Input/Input';
 import ColorTheme from '../ColorTheme/ColorTheme';
 import FontsTheme from '../FontsTheme/FontsTheme';
 import { useAppDispatch } from '../../store/store';
-import { useSelector } from 'react-redux';
+
 import {
   setTheme,
-  selectTheme,
   setCurrentFont,
 } from '../../store/slice/themeSlice';
 
-const Modal = ({
+type ModalProps = {
+  active: boolean;
+  setmodalActive: Function;
+  setActive: Function;
+  pomodoro: number;
+  setpomodoro: Function;
+  short: number;
+  setshort: Function;
+  long: number;
+  setlong: Function;
+};
+
+const Modal: FC<ModalProps> = ({
   active,
   setActive,
   pomodoro,
@@ -22,17 +34,22 @@ const Modal = ({
   setshort,
   setlong,
   long,
-}: any) => {
+}) => {
   const dispatch = useAppDispatch();
-  const { CurrentFont } = useSelector(selectTheme);
-  const [CurrentFontColor, setCurrentFontColor] =
-    React.useState('Tilt');
+  const [CurrentFontColor, setCurrentFontColor] = React.useState('Tilt');
   const [CurrentColor, setCurrentColor] = React.useState('pomodoro');
   const [inputPomodoro, setinputPomodoro] = React.useState(pomodoro);
   const [inputshort, setinputshort] = React.useState(short);
   const [inputlong, setinputlong] = React.useState(long);
+  const closeModalKeyPress = useKeyPress('Escape');
 
-  const applyingСhanges = (e: React.SyntheticEvent) => {
+  React.useEffect(() => {
+    if (active === true) {
+      setActive(!closeModalKeyPress);
+    }
+  }, [closeModalKeyPress]);
+
+  const applyingСhanges = (e: React.FormEvent) => {
     e.preventDefault();
     setmodalActive(false);
     setpomodoro(inputPomodoro);

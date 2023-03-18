@@ -1,25 +1,16 @@
-// import CircleTimer from './components/CircleTimer/CircleTimer';
 import { ReactSVG } from 'react-svg';
 import ListButton from './components/ListButton/ListButton';
 import Modal from './components/Modal/Modal';
-import React from 'react';
+import React, { FC } from 'react';
 import CircleTimer from './components/CircleTimer/CircleTimer';
 
-export interface ISignUpData {
-  firstName: string;
-  emailAddress: string;
-}
-
-function App() {
+const App:FC = () => {
   const [modalActive, setmodalActive] = React.useState(false);
   const [play, setPlay] = React.useState<boolean>(false);
   const [activetag, setactivetag] = React.useState(0);
-  const [progress, setProgress] = React.useState<number>(0);
-  
   const [pomodoro, setpomodoro] = React.useState<number>(11);
   const [short, setshort] = React.useState<number>(21);
   const [long, setlong] = React.useState<number>(30);
-
   const [initTime, setInittime] = React.useState(0);
   const [Time, setTime] = React.useState(0);
 
@@ -69,7 +60,6 @@ function App() {
         <ReactSVG src="setting.svg" />
       </button>
       <Modal
-        setProgress={setProgress}
         active={modalActive}
         setActive={setmodalActive}
         pomodoro={pomodoro}

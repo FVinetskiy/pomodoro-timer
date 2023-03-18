@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { FC } from 'react';
 import { ReactSVG } from 'react-svg';
-import { useAppDispatch } from '../../store/store';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../store/slice/themeSlice';
 
-const ColorTheme = ({ DataColor }: any) => {
-  const dispatch = useAppDispatch();
+type PropsColorTheme = {
+  DataColor: Function;
+};
+
+const ColorTheme: FC<PropsColorTheme> = ({ DataColor }) => {
   const { theme } = useSelector(selectTheme);
 
   React.useLayoutEffect(() => {
@@ -18,7 +20,11 @@ const ColorTheme = ({ DataColor }: any) => {
     { id: 2, status: false, color: 'longbreak' },
   ]);
 
-  const toggleСolor = (id: number, color: string, e: any) => {
+  const toggleСolor = (
+    id: number,
+    color: string,
+    e: React.SyntheticEvent
+  ) => {
     e.preventDefault();
     const newArr = ColorButton.map((item) =>
       item.id === id

@@ -8,9 +8,9 @@ type propsInput = {
 };
 
 const Input: React.FC<propsInput> = ({ value, onChange }) => {
-  const [valueCol, setValue] = React.useState(value);
+  const [valueCol, setValue] = React.useState<number>(value);
 
-  const mainonChange = (e: any) => {
+  const mainonChange = (e:any) => {
     const result = e.target.value;
     setValue(result);
     onChange(result);

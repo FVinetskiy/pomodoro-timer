@@ -2,9 +2,11 @@ import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../store/slice/themeSlice';
 
-const FontsTheme = ({
-  DataCurrentFont,
-}: any) => {
+type PropsFontsTheme = {
+  DataCurrentFont: Function;
+};
+
+const FontsTheme: FC<PropsFontsTheme> = ({ DataCurrentFont }) => {
   const { CurrentFont } = useSelector(selectTheme);
 
   React.useLayoutEffect(() => {
@@ -17,7 +19,11 @@ const FontsTheme = ({
     { id: 2, status: false, font: 'Dancing Script' },
   ]);
 
-  const toggleFont = (id: number, font: string, e: any) => {
+  const toggleFont = (
+    id: number,
+    font: string,
+    e: React.SyntheticEvent
+  ) => {
     e.preventDefault();
     const newFontArr = FontButton.map((item) =>
       item.id === id
